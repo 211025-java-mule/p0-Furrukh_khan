@@ -45,8 +45,6 @@ public class clientHandler {
         clientHandler.coronaObjects = coronaObjects;
     }
 
-
-
     private void makeObjects(String data) {
         try{
             StringReader csvBodyReader = new StringReader(data);
@@ -56,9 +54,9 @@ public class clientHandler {
             Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(csvBodyReader);
             for (CSVRecord record : records) {
                 date = dateFormat.parse(record.get("Last_Update"));
-
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                 obj = new CoronaDataObject(record.get("Province_State"), record.get("Country_Region"),
-                        date,Float.parseFloat(record.get("Confirmed") != "" ? record.get("Confirmed") : "0.0" ),
+                        sqlDate,Float.parseFloat(record.get("Confirmed") != "" ? record.get("Confirmed") : "0.0" ),
                         Float.parseFloat(record.get("Deaths") != "" ? record.get("Deaths") : "0.0"),
                         Float.parseFloat(record.get("Recovered") != "" ? record.get("Recovered") : "0.0")
                         ,Float.parseFloat(record.get("Active") != "" ? record.get("Active") : "0.0"),
