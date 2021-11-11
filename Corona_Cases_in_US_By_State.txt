@@ -3,7 +3,7 @@ CoronaDataObject{Province_State='Alaska', Country_Region='US', Last_Update=Sat J
 CoronaDataObject{Province_State='American Samoa', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=0.0, Deaths=0.0, Recovered=0.0, Active=0.0, Total_Test_Results=2140.0}
 CoronaDataObject{Province_State='Arizona', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=530267.0, Deaths=9015.0, Recovered=76934.0, Active=444318.0, Total_Test_Results=5155330.0}
 CoronaDataObject{Province_State='Arkansas', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=229442.0, Deaths=3711.0, Recovered=199247.0, Active=26484.0, Total_Test_Results=2051488.0}
-CoronaDataObject{Province_State='California', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=2436825.0, Deaths=26159.0, Recovered=0.0, Active=2323708.0, Total_Test_Results=3.3058312E7}
+CoronaDataObject{Province_State='California', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=2437084.0, Deaths=26168.0, Recovered=0.0, Active=2309915.0, Total_Test_Results=3.3058312E7}
 CoronaDataObject{Province_State='Colorado', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=337161.0, Deaths=4873.0, Recovered=18102.0, Active=314186.0, Total_Test_Results=4444206.0}
 CoronaDataObject{Province_State='Connecticut', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=185708.0, Deaths=5995.0, Recovered=9800.0, Active=169913.0, Total_Test_Results=4320693.0}
 CoronaDataObject{Province_State='Delaware', Country_Region='US', Last_Update=Sat Jan 02 05:30:44 EST 2021, Confirmed=58064.0, Deaths=1065.0, Recovered=18851.0, Active=38283.0, Total_Test_Results=984606.0}

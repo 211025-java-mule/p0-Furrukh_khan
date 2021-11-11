@@ -54,6 +54,7 @@ public class hello {
                 ClientHandler.displayObjects();
                 ClientHandler.writeToFile();
                 ClientHandler.displayFile();
+                DbHandler db = new coronaDbHandler(null,"demo","postgres","aps123");
                 resp.getWriter().println("<h1>" + data + "</h1>");
             }
         }).addMapping("/hello");
