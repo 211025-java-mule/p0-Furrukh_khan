@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,7 +59,25 @@ public class hello {
                 ClientHandler.displayFile();
                 DbHandler db = new coronaDbHandler(null,"demo","postgres","aps123");
                 db.makeTable("corona_data");
-                resp.getWriter().println("<h1>" + data + "</h1>");
+
+                ResultSet rs = db.findByCountry("US");
+                try{
+                    resp.getWriter().println("<h1>" + "Province/State " + "Country "
+                            + "Last Update " + "Confirmed " + "Deaths " + "Recovered " +
+                            "Active " + "Total Test Result" + "<h1>");
+                    while(rs.next()){
+                        resp.getWriter().println("<h1>" + rs.getString(1) + " " + rs.getString(2)
+                                + " " + rs.getString(3) + " " + rs.getString(4)
+                                + " " + rs.getString(5)
+                                + " " + rs.getString(6) + " " + rs.getString(7)
+                                + " " + rs.getString(8) + " " + rs.getString(9) + "<h1>");
+                    }
+                }
+                catch(SQLException e){
+                    e.printStackTrace();
+                }
+
+
             }
         }).addMapping("/hello");
         try {

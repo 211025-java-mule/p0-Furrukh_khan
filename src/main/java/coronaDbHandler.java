@@ -1,3 +1,4 @@
+import javax.xml.transform.Result;
 import java.sql.*;
 
 public class coronaDbHandler extends DbHandler{
@@ -52,11 +53,14 @@ public class coronaDbHandler extends DbHandler{
     int makeTable(String name) {
         try {
             this.tableName = name;
-            String query = "Create table if not exists ";
+            String query = "Drop table if exists corona_data";
+            PreparedStatement statement1 = super.conn.prepareStatement(query);
+            statement1.executeUpdate();
+            query = "Create table if not exists ";
             query = query + name;
             query = query + " (id serial primary key, province_state text, country_region text, last_update date, confirmed float, deaths float, recovered float, active float, total_test_results float)";
-            PreparedStatement statement = super.conn.prepareStatement(query);
-            statement.executeUpdate();
+            PreparedStatement statement2 = super.conn.prepareStatement(query);
+            statement2.executeUpdate();
             this.fillTable();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,8 +83,31 @@ public class coronaDbHandler extends DbHandler{
         return null;
     }
 
+    public ResultSet findByState(String state) {
+        try{
+            String query = "select * from corona_data where province_state = \'"  + state + "\'";
+            PreparedStatement statement = super.conn.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            return rs;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     @Override
     ResultSet findByCountry(String country) {
+        try{
+            String query = "select * from corona_data where country_region = \'"  + country + "\'";
+            PreparedStatement statement = super.conn.prepareStatement(query);
+            ResultSet rs = statement.executeQuery();
+            return rs;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 
