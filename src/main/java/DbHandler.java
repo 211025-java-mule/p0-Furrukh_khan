@@ -45,6 +45,8 @@ public abstract class DbHandler {
 
     abstract int makeTable(String name);
 
+    abstract void fillTable();
+
     abstract int deleteTable();
 
     abstract int addRow(String table, String data);
@@ -52,5 +54,7 @@ public abstract class DbHandler {
     abstract ResultSet findById(String id);
 
     abstract ResultSet findByCountry(String country);
+
+    abstract ResultSet findByState(String state);
 
 }

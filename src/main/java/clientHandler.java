@@ -1,6 +1,8 @@
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -76,8 +78,6 @@ public class clientHandler {
         }
     }
 
-
-
     public String getData(){
         try{
             HttpClient client = HttpClient.newHttpClient();
@@ -102,6 +102,38 @@ public class clientHandler {
         FileHandler cFh = new coronaFileHandler("/","Corona_Cases_in_US_By_State.txt");
         cFh.writeFile();
 
+    }
+
+    public String displayAllStates(DbHandler db){
+        ResultSet rs = db.findByCountry("US");
+        return convertToString(rs);
+
+    }
+
+    public String displaySingleState(String choice, DbHandler db){
+        ResultSet rs = db.findByState(choice);
+        return convertToString(rs);
+    }
+
+    public String convertToString(ResultSet rs){
+        try{
+
+            String choice = "<h1>" + "Province/State " + "Country "
+                    + "Last Update " + "Confirmed " + "Deaths " + "Recovered " +
+                    "Active " + "Total Test Result" + "<h1>";
+            while(rs.next()){
+                choice = choice + "<h1>" + rs.getString(1) + " " + rs.getString(2)
+                        + " " + rs.getString(3) + " " + rs.getString(4)
+                        + " " + rs.getString(5)
+                        + " " + rs.getString(6) + " " + rs.getString(7)
+                        + " " + rs.getString(8) + " " + rs.getString(9) + "<h1>";
+            }
+            return choice;
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return "";
     }
 
     @Override

@@ -61,7 +61,6 @@ public class coronaDbHandler extends DbHandler{
             query = query + " (id serial primary key, province_state text, country_region text, last_update date, confirmed float, deaths float, recovered float, active float, total_test_results float)";
             PreparedStatement statement2 = super.conn.prepareStatement(query);
             statement2.executeUpdate();
-            this.fillTable();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -83,6 +82,7 @@ public class coronaDbHandler extends DbHandler{
         return null;
     }
 
+    @Override
     public ResultSet findByState(String state) {
         try{
             String query = "select * from corona_data where province_state = \'"  + state + "\'";
@@ -111,7 +111,8 @@ public class coronaDbHandler extends DbHandler{
         return null;
     }
 
-    void fillTable(){
+    @Override
+    public void fillTable(){
         try{
             String query = "Insert into " + this.tableName + "(province_state,country_region,last_update," +
                     "confirmed,deaths,recovered,active,total_test_results)values(?,?,?,?,?,?,?,?)";
